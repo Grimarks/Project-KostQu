@@ -45,16 +45,19 @@ body {
 }
 
 .container img {
-    border-radius: 10px;
+    border-radius: 6px;
     display: block;
-    width: 100%;
-    height: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    width: 90%;
+    height: 60%;
 }
 
 .container p {
     margin-top: 10px;
     word-wrap: break-word;
-    font-size: large;
+    font-size: medium;
     font-weight: bold;
 }
 
@@ -186,7 +189,7 @@ img.displaySlide {
 .offScreenMenu {
     background-color: whitesmoke;
     height: 100vh;
-    width: 100%;
+    width: 45%;
     max-width: 300px;
     position: fixed;
     top: 0;
@@ -279,7 +282,7 @@ nav {
     .offScreenMenu {
         background-color: whitesmoke;
         height: 100vh;
-        width: 100%;
+        width: 45%;
         max-width: 300px;
         position: fixed;
         top: 0;
@@ -337,6 +340,19 @@ nav {
         box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
         border-radius: 16px;
 
+    }
+
+    #SearchBarHam {
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+
+    #search-barHam {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 14px;
     }
 
     .hamburger {
@@ -404,7 +420,7 @@ nav {
     .offScreenMenu {
         background-color: whitesmoke;
         height: 100vh;
-        width: 100%;
+        width: 45%;
         max-width: 300px;
         position: fixed;
         top: 0;
@@ -453,7 +469,7 @@ nav {
     }
 
     #navbar {
-        padding: 10px;
+        padding: 0.1%;
         margin: 20px;
         display: flex;
         justify-content: space-between;
@@ -461,7 +477,19 @@ nav {
         background-color: whitesmoke;
         box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
         border-radius: 16px;
+    }
 
+    #SearchBarHam {
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+
+    #search-barHam {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 14px;
     }
 
     .hamburger {
@@ -496,6 +524,7 @@ nav {
         justify-content: center;
         align-items: center;
         margin-top: 10px;
+        overflow: hidden;
     }
 
     .container img {
@@ -510,7 +539,7 @@ nav {
     .container p {
         margin-top: 10px;
         word-wrap: break-word;
-        font-size: small;
+        font-size: 20%;
     }
 
 }
