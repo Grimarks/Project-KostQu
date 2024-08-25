@@ -70,7 +70,7 @@ body {
 .offScreenMenu {
     background-color: whitesmoke;
     height: 100vh;
-    width: 100%;
+    width: 45%;
     max-width: 300px;
     position: fixed;
     top: 0;
@@ -167,10 +167,11 @@ nav {
     background-color: white;
     cursor: pointer;
     width: 50%;
+    height: 90%;
 }
 
 .container img {
-    border-radius: 10px;
+    border-radius: 6px;
     display: block;
     width: 100%;
 }
@@ -194,6 +195,7 @@ nav {
 .slider {
     position: relative;
     width: 90%;
+    height: 50%;
     margin: auto;
     overflow: hidden;
 }
@@ -228,6 +230,11 @@ img.displaySlide {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+.slides{
+    margin-top: 15%;
+    margin-bottom: 15%;
 }
 
 .prev {
@@ -351,7 +358,7 @@ select {
     .offScreenMenu {
         background-color: whitesmoke;
         height: 100vh;
-        width: 100%;
+        width: 45%;
         max-width: 300px;
         position: fixed;
         top: 0;
@@ -411,6 +418,19 @@ select {
 
     }
 
+    #SearchBarHam {
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+
+    #search-barHam {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
     .hamburger {
         position: absolute;
         left: 20px;
@@ -451,7 +471,7 @@ select {
     .offScreenMenu {
         background-color: whitesmoke;
         height: 100vh;
-        width: 100%;
+        width: 45%;
         max-width: 300px;
         position: fixed;
         top: 0;
@@ -508,6 +528,19 @@ select {
         background-color: whitesmoke;
         box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
         border-radius: 16px;
+    }
+
+    #SearchBarHam {
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+
+    #search-barHam {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 14px;
     }
 
     .hamburger {
