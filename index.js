@@ -1,4 +1,3 @@
-
 const hamMenu = document.getElementById('hamburger');
 const offScreenMenu = document.getElementById('offScreenMenu');
 
@@ -44,3 +43,4 @@ function nextSlide(){
     slideIndex++;
     showSlide(slideIndex);
 }
+
