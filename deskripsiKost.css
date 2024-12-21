@@ -18,9 +18,44 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-
 #logo img {
     height: 55px;
+}
+
+#search-bar {
+    width: 80%;
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#search-bar:focus {
+    outline: none;
+    border-color: #007BFF; /* Warna saat fokus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#search-button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+#search-button:hover {
+    background-color: #0056b3;
+}
+
+#search-button:active {
+    background-color: #004085;
 }
 
 #SearchBar {
@@ -28,13 +63,6 @@ body {
     margin: 0 20px;
 }
 
-#search-bar {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 14px;
-}
 
 .nav-links {
     display: flex;
@@ -62,11 +90,11 @@ body {
     font-weight: bold;
 }
 
-
 #navbar {
     display: none;
 }
 
+/* Hamburger Menu Styles */
 .offScreenMenu {
     background-color: whitesmoke;
     height: 100vh;
@@ -98,7 +126,7 @@ body {
     border-bottom: 1px solid #444;
 }
 
-#hamLi{
+#hamLi {
     margin-top: 40%;
 }
 
@@ -127,7 +155,6 @@ nav {
     background-color: whitesmoke;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
     border-radius: 16px;
-
 }
 
 .hamburger {
@@ -135,13 +162,12 @@ nav {
     left: 20px;
     height: 30px;
     width: 50px;
-    position: relative;
-    cursor: pointer;
-    z-index: 1000;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    cursor: pointer;
+    z-index: 1000;
 }
 
 .hamburger span {
@@ -206,19 +232,18 @@ nav {
 }
 
 .slider img.slide {
-    width: 80%;
-    height: 300px;
+    display: none;
+    width: 100%;
+    max-height: 300px;
     object-fit: cover;
-    margin: 0 auto;
-    margin-top: 60px;
-    border-radius: 20px;
+    margin: auto;
+    border-radius: 10px;
 }
 
 img.displaySlide {
     display: block;
-    animation-name: fade;
-    animation-duration: 1.5s;
 }
+
 
 .slider button {
     position: absolute;
@@ -237,6 +262,24 @@ img.displaySlide {
     margin-bottom: 15%;
 }
 
+.slides img {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.slides img.displaySlide {
+    display: block;
+    opacity: 1;
+}
+
+.slide {
+    display: none;
+}
+.slide.displaySlide {
+    display: block;
+}
+
+
 .prev {
     left: 0;
 }
@@ -244,6 +287,7 @@ img.displaySlide {
 .next {
     right: 0;
 }
+
 
 /* WhatsApp, Instagram, Lokasi */
 #WhatsApp,
@@ -260,20 +304,6 @@ img.displaySlide {
 #Lokasi label {
     display: inline-block;
     width: 120px;
-}
-
-#WhatsApp a,
-#Instagram a,
-#Lokasi a {
-    color: #2e86c1;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-#WhatsApp a:hover,
-#Instagram a:hover,
-#Lokasi a:hover {
-    color: #1b4f72;
 }
 
 /* Payment */
@@ -312,10 +342,6 @@ select {
     color: #333;
 }
 
-.payment-button {
-    margin-top: 20px;
-}
-
 .payment-button button {
     background-color: #4CAF50;
     color: white;
@@ -328,7 +354,6 @@ select {
 .payment-button button:hover {
     background-color: #45a049;
 }
-
 
 #payNow {
     padding: 12px 20px;
@@ -345,14 +370,88 @@ select {
 #payNow:hover {
     background-color: #218838;
 }
-
-
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     #ContainerNav {
         display: none;
     }
-    #navbar{
-        display: block;
+
+    #navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        margin: 20px;
+        background-color: whitesmoke;
+        border-radius: 16px;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    #SearchBarHam {
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+
+    #search-barHam {
+        width: 80%;
+        flex-grow: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    #search-barHam:focus {
+        outline: none;
+        border-color: #007BFF; /* Warna saat fokus */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    #search-barHam-button {
+        background-color: #007BFF;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+    }
+
+    #search-barHam-button:hover {
+        background-color: #0056b3;
+    }
+
+    #search-barHam-button:active {
+        background-color: #004085;
+    }
+
+    #SearchBarHam {
+        flex-grow: 1;
+        margin: 0 20px;
+    }
+
+    .hamburger {
+        position: absolute;
+        left: 20px;
+        height: 30px;
+        width: 50px;
+        position: relative;
+        cursor: pointer;
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .hamburger span {
+        height: 4px;
+        width: 30px;
+        background-color: gray;
+        border-radius: 20px;
+        transition: all 0.4s ease;
     }
 
     .offScreenMenu {
@@ -386,15 +485,11 @@ select {
         border-bottom: 1px solid #444;
     }
 
-    #hamLi{
-        margin-top: 40%;
-    }
-
     .offScreenMenu ul li a {
+        display: block;
+        width: 100%;
         color: black;
         text-decoration: none;
-        width: 100%;
-        display: block;
         transition: background-color 0.3s ease;
     }
 
@@ -406,193 +501,108 @@ select {
         left: 0;
     }
 
-    #navbar {
-        padding: 10px;
-        margin: 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: whitesmoke;
-        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-        border-radius: 16px;
-
-    }
-
-    #SearchBarHam {
-        flex-grow: 1;
-        margin: 0 20px;
-    }
-
-    #search-barHam {
-        width: 100%;
-        padding: 8px 12px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        font-size: 14px;
-    }
-
-    .hamburger {
-        position: absolute;
-        left: 20px;
-        height: 30px;
-        width: 50px;
-        position: relative;
-        cursor: pointer;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-    }
-
-    .hamburger span {
-        height: 4px;
-        width: 30px;
-        background-color: gray;
-        border-radius: 20px;
-        transition: all 0.4s ease;
-    }
-    #SearchBar {
-        margin: 10px 0;
-        width: 100%;
-    }
     #Akun {
         margin: 10px 0;
     }
-
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
-
     #ContainerNav {
         display: none;
     }
 
-    .offScreenMenu {
-        background-color: whitesmoke;
-        height: 100vh;
-        width: 45%;
-        max-width: 300px;
-        position: fixed;
-        top: 0;
-        left: -300px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        font-size: 25px;
-        transition: left 0.4s ease;
-        z-index: 999;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-    }
-
-    .offScreenMenu ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-    }
-
-    .offScreenMenu ul li {
-        width: 100%;
-        padding: 15px 0;
-        border-bottom: 1px solid #444;
-    }
-
-    #hamLi {
-        margin-top: 40%;
-    }
-
-    .offScreenMenu ul li a {
-        color: black;
-        text-decoration: none;
-        width: 100%;
-        display: block;
-        transition: background-color 0.3s ease;
-    }
-
-    .offScreenMenu ul li a:hover {
-        background-color: #575757;
-    }
-
-    .offScreenMenu.active {
-        left: 0;
-    }
-
     #navbar {
-        padding: 10px;
-        margin: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 5px;
+        margin: 20px;
         background-color: whitesmoke;
-        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
         border-radius: 16px;
+        box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
     }
 
+    /* Search Bar Mobile */
     #SearchBarHam {
         flex-grow: 1;
         margin: 0 20px;
-    }
-
-    #search-barHam {
-        width: 100%;
-        padding: 8px 12px;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        font-size: 14px;
-    }
-
-    .hamburger {
-        position: absolute;
-        left: 20px;
-        height: 30px;
-        width: 50px;
-        position: relative;
-        cursor: pointer;
-        z-index: 1000;
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
         align-items: center;
     }
 
-    .hamburger span {
-        height: 4px;
-        width: 30px;
-        background-color: gray;
-        border-radius: 20px;
-        transition: all 0.4s ease;
+    #search-barHam {
+        flex-grow: 1;
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    #Akun {
-        margin: 10px 0;
+    #search-barHam:focus {
+        outline: none;
+        border-color: #007BFF; /* Warna fokus */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    #search-barHam-button {
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        margin-left: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+    }
+
+    #search-barHam-button:hover {
+        background-color: #0056b3;
+    }
+
+    #search-barHam-button:active {
+        background-color: #004085;
+    }
+
+    .hamburger {
+        margin-right: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 40px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 1000;
+        position: relative;
+    }
+
+    .hamburger span {
+        display: block;
+        width: 30px;
+        height: 4px;
+        background-color: gray;
+        border-radius: 20px;
+        transition: transform 0.3s ease, background-color 0.3s ease;
     }
 
     #content {
         display: flex;
         flex-direction: column;
         margin-top: 20px;
+        gap: 10px;
     }
 
-    #ContainerKost {
-        order: 1;
-        margin-bottom: 10px;
-        width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
+    #ContainerKost,
     #ProductContent {
-        order: 2;
-        margin-bottom: 10px;
         width: 90%;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
     }
 
     .slides {
         margin-bottom: 30%;
     }
 }
-
