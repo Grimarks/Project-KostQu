@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="../css/payment.css">
+</head>
+<body>
+<!--Navbar Normal-->
+<header id="ContainerNav">
+    <nav class="nav-container">
+        <div id="logo">
+            <a href="index.html"><img src="../foto/LOGO.png" alt="Logo KostQu" ></a>
+        </div>
+
+        <div id="SearchBar">
+            <input type="text" id="search-bar" placeholder="Search...">
+            <button id="search-button">Search</button>
+        </div>
+
+        <div id="Navi" class="nav-links">
+            <a><img src="../foto/notifB.png" alt="Notification icon" width="25px"></a>
+            <a><img src="../foto/infoB.png" alt="Information icon" width="25px"></a>
+        </div>
+
+        <div id="Akun">
+            <img src="../foto/akunB.png" alt="Account icon" width="40px">
+            <span id="akun-name">Hakan Ilyasa</span>
+        </div>
+    </nav>
+</header>
+
+<!--Navbar Hamburger untuk hp-->
+<nav id="navbar">
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div id="SearchBarHam">
+        <input type="text" id="search-barHam" placeholder="Search...">
+        <button id="search-barHam-button">Search</button>
+    </div>
+
+    <div id="fotoLogo">
+        <img src="../foto/LOGO.png" alt="logo KostQu" height="60px" onclick="window.location.href='../html/index.html'">
+    </div>
+
+    <div class="offScreenMenu" id="offScreenMenu">
+        <ul>
+            <div id="hamLi">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Notification</a></li>
+                <li><a href="">Information</a></li>
+            </div>
+        </ul>
+    </div>
+</nav>
+
+<div id="content">
+    <div id="payment-container" class="container">
+        <h2>Payment</h2>
+        <form id="payment-form">
+            <div class="form-group">
+                <label for="cardName">Cardholder Name</label>
+                <input type="text" id="cardName" placeholder="Enter cardholder name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" placeholder="Enter card number" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="expirationDate">Expiration Date</label>
+                    <input type="month" id="expirationDate" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" placeholder="Enter CVV" required>
+                </div>
+            </div>
+
+            <div class="price-summary">
+                <p>Total Price: <span id="price">Rp. 0</span></p>
+            </div>
+
+            <div class="payment-button">
+                <button type="submit" id="payNow">Confirm Payment</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="notification" class="notification">Pembayaran berhasil!</div>
+
+<script src="../js/index.js"></script>
+<script>
+    // Ambil harga dari localStorage dan tampilkan di halaman payment.html
+    const priceElement = document.getElementById('price');
+    const storedPrice = localStorage.getItem('selectedPrice');
+    if (storedPrice) {
+        priceElement.textContent = `Rp. ${storedPrice}`;
+    } else {
+        priceElement.textContent = 'Rp. 0';
+    }
+
+    // Tangani pengiriman formulir
+    document.getElementById('payment-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Mencegah pengiriman formulir default
+
+        // Simulasi proses pembayaran
+        // Di sini Anda bisa menambahkan logika untuk memproses pembayaran
+        // Misalnya, panggil API untuk memproses pembayaran
+
+        // Tampilkan notifikasi
+        const notification = document.getElementById('notification');
+        notification.style.display = 'block'; // Tampilkan notifikasi
+        notification.textContent = 'Pembayaran berhasil!'; // Ubah teks notifikasi
+
+        // Reset formulir setelah pembayaran berhasil
+        this.reset();
+    });
+
+</script>
+
+</body>
+</html>
