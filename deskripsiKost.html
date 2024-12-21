@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Description</title>
-    <link rel="stylesheet" href="deskripsiKostStyle.css">
+    <link rel="stylesheet" href="css/deskripsiKost.css">
 </head>
 <body>
 
@@ -19,10 +19,10 @@
 
         <div id="SearchBar">
             <input type="text" id="search-bar" placeholder="Search...">
+            <button id="search-button">Search</button>
         </div>
 
         <div id="Navi" class="nav-links">
-            <a><img src="foto/shopCartB.svg" alt="Shopping cart icon" width="25px"></a>
             <a><img src="foto/notifB.png" alt="Notification icon" width="25px"></a>
             <a><img src="foto/infoB.png" alt="Information icon" width="25px"></a>
         </div>
@@ -44,17 +44,17 @@
 
     <div id="SearchBarHam">
         <input type="text" id="search-barHam" placeholder="Search...">
+        <button id="search-barHam-button">Search</button>
     </div>
 
     <div id="fotoLogo">
-       <a href="index.html"><img src="foto/LOGO.png" alt="logo KostQu" height="60px"></a>
+        <img src="foto/LOGO.png" alt="logo KostQu" height="60px" onclick="window.location.href='html/index.html'">
     </div>
 
     <div class="offScreenMenu" id="offScreenMenu">
         <ul>
             <div id="hamLi">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="">Shop Item</a></li>
                 <li><a href="">Notification</a></li>
                 <li><a href="">Information</a></li>
             </div>
@@ -66,10 +66,7 @@
     <div id="ContainerKost" class="container">
         <div class="slider">
             <div class="slides">
-                <img class="slide" src="foto/Kost1.jpeg" alt="Image #1">
-                <img class="slide" src="foto/Kost2.jpeg" alt="Image #2">
-                <img class="slide" src="foto/Kost3.jpeg" alt="Image #3">
-                <img class="slide" src="foto/Kost4.jpeg" alt="Image #4">
+                <!-- Gambar akan di-generate melalui JavaScript -->
             </div>
             <button class="prev" onclick="prevSlide()">&#10094</button>
             <button class="next" onclick="nextSlide()">&#10095</button>
@@ -77,56 +74,138 @@
     </div>
 
     <div id="ProductContent" class="container">
-        <h2>Dekripsi Kost</h2>
-        <p>Dijual Kost Strategis di [Nama Daerah]</p>
-
-        <p>Kost dengan ukuran kamar 3x4 meter, dilengkapi dengan fasilitas lengkap seperti tempat tidur, lemari pakaian, meja belajar, AC, dan kamar mandi dalam. Luas tanah 200 m² dengan 10 kamar kost yang nyaman dan rapi. Lokasi sangat strategis, berada di pusat kota [Nama Kota], hanya 5 menit dari kampus [Nama Kampus], dekat dengan pusat perbelanjaan, dan akses mudah ke transportasi umum.</p>
-
-        <p>Cocok untuk investasi atau usaha jangka panjang di kawasan yang terus berkembang.</p>
-
-        Harga nego sampai jadi!</p>
-
+        <h2>Deskripsi Kost</h2>
+        <p id="description">Memuat deskripsi...</p>
         <br><br>
-        <div id="WhatsApp">
-            <label>WhatsApp     :</label>
+        <div id="contact-info">
+            <div id="WhatsApp">
+                <label>WhatsApp: Memuat...</label>
+            </div>
+            <div id="Instagram">
+                <a><label>Instagram: Memuat...</label></a>
+            </div>
+            <div id="Lokasi">
+                <label>Lokasi: Memuat...</label>
+            </div>
         </div>
-        <div id="Instagram">
-            <a><label>Instagram    :</label></a>
-        </div>
-        <div id="Lokasi">
-            <label>Lokasi       :</label>
-        </div>
-
-        <div id="payment">
+        <div id="priceDisplay">
             <div class="duration-options">
                 <label for="stayDuration">Choose your stay duration:</label>
                 <select id="stayDuration">
+                    <option value="" disabled selected>Select duration</option>
                     <option value="1day">1 Day</option>
                     <option value="1month">1 Month</option>
                     <option value="1year">1 Year</option>
                 </select>
             </div>
 
-            <div class="type-option">
-                <label for="roomType">Choose your room type:</label>
-                <select id="roomType">
-                    <option value="AC">AC</option>
-                    <option value="NonAC">Non-AC</option>
-                </select>
-            </div>
-
-            <div id="priceDisplay">
-                <p>Total Price: <span id="totalPrice">0</span></p>
-            </div>
-
-            <div class="payment-button">
-                <button id="payNow">Pay Now</button>
-            </div>
+            <!-- Harga berdasarkan pilihan -->
+            <p>Total Harga: Rp<span id="totalPrice">0</span></p>
+        </div>
+        <br><br>
+        <div class="payment-button">
+            <button id="payNow">Pay Now</button>
         </div>
 
     </div>
 </div>
 
-<script src="deskripsiKostJS.js"></script>
+
+
+<script src="js/deskripsiKost.js"></script>
+<script>
+    // URL API yang dinamis berdasarkan kostId
+    const kostId = new URLSearchParams(window.location.search).get('id');
+    const apiUrl = `http://localhost:3001/kost/${kostId}`;
+
+    // Elemen yang dibutuhkan
+    const stayDuration = document.getElementById('stayDuration');
+    const totalPriceElement = document.getElementById('totalPrice');
+
+    // Event listener untuk dropdown
+    stayDuration.addEventListener('change', async () => {
+        const selectedValue = stayDuration.value; // Ambil durasi yang dipilih
+
+        if (selectedValue) {
+            // Tampilkan harga berdasarkan durasi
+            const totalPrice = await fetchPrice(selectedValue); // Panggil fungsi untuk mengambil harga dari database
+            totalPriceElement.textContent = totalPrice.toLocaleString(); // Update tampilan harga
+        }
+    });
+
+    // Fungsi untuk mengambil harga berdasarkan durasi
+    async function fetchPrice(duration) {
+        try {
+            const response = await fetch(`${apiUrl}/price?duration=${duration}`);
+            if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+
+            const data = await response.json();
+            return data.price || 0; // Kembalikan harga (default ke 0 jika tidak ada)
+        } catch (error) {
+            console.error('Gagal mengambil harga:', error);
+            alert('Gagal mengambil harga dari server.');
+            return 0; // Kembalikan 0 jika terjadi error
+        }
+    }
+
+    // Panggil data awal (tanpa harga)
+    async function fetchKostDetails() {
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+
+            const { kost, photos } = await response.json();
+
+            // Update elemen lainnya (nama, deskripsi, kontak, dll.)
+            document.querySelector('#ProductContent h2').textContent = kost.nama_kost || 'Kost Tidak Ditemukan';
+            document.querySelector('#description').textContent = kost.deskripsi_kost || 'Deskripsi tidak tersedia';
+            if (kost.link_whatsapp) {
+                document.querySelector('#WhatsApp').innerHTML = `WhatsApp: <a href="${kost.link_whatsapp}" target="_blank">${kost.no_hp}</a>`;
+            } else {
+                document.querySelector('#WhatsApp').textContent = 'WhatsApp: Tidak tersedia';
+            }
+            document.querySelector('#Instagram').innerHTML = kost.link_instagram
+                ? `Instagram       : <a href="${kost.link_instagram}" target="_blank">${kost.link_instagram}</a>`
+                : 'Instagram: Tidak tersedia';
+            if (kost.link_alamat_jalan) {
+                document.querySelector('#Lokasi').innerHTML = `Lokasi: <a href="${kost.link_alamat_jalan}" target="_blank">${kost.alamat_jalan}</a>`;
+            } else {
+                document.querySelector('#Lokasi').textContent = 'Lokasi: Tidak tersedia';
+            }
+
+            const slider = document.querySelector('.slides');
+            if (photos.length > 0) {
+                slider.innerHTML = photos
+                    .map(photo => `<img class="slide" src="/FotoKost/${photo}" alt="Kost photo">`)
+                    .join('');
+            } else {
+                slider.innerHTML = '<p>No photos available</p>';
+            }
+
+            initializeSlider();
+        } catch (error) {
+            console.error(error);
+            alert('Gagal memuat data kost.');
+        }
+    }
+
+    // Panggil data awal
+    fetchKostDetails();
+
+    document.getElementById('payNow').addEventListener('click', () => {
+        const selectedValue = stayDuration.value; // Ambil durasi yang dipilih
+        if (selectedValue) {
+            // Simpan harga ke localStorage
+            localStorage.setItem('selectedPrice', totalPriceElement.textContent);
+            // Arahkan ke halaman payment.html
+            window.location.href = 'payment.html';
+        } else {
+            alert('Silakan pilih durasi terlebih dahulu!');
+        }
+    });
+
+</script>
+
+
 </body>
 </html>
