@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Description</title>
-    <link rel="stylesheet" href="css/deskripsiKost.css">
+    <link rel="stylesheet" href="deskripsiKost.css">
 </head>
 <body>
 
@@ -176,7 +176,7 @@
             const slider = document.querySelector('.slides');
             if (photos.length > 0) {
                 slider.innerHTML = photos
-                    .map(photo => `<img class="slide" src="/FotoKost/${photo}" alt="Kost photo">`)
+                    .map(photo => `<img class="slide" src="FotoKost/${photo}" alt="Kost photo">`)
                     .join('');
             } else {
                 slider.innerHTML = '<p>No photos available</p>';
